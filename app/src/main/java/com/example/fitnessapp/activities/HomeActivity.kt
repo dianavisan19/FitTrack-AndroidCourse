@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.fitnessapp.R
 import com.example.fitnessapp.databinding.FragmentHomeBinding
@@ -15,18 +16,14 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = FragmentHomeBinding.inflate(layoutInflater)
-        setContentView(binding.homeFragmentId)
+        setContentView(R.layout.activity_home)
 
-        val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        val navController = Navigation.findNavController(this, R.id.bottom_navigation)
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.frag_host) as NavHostFragment
+        val navController = navHostFragment.navController
 
-        NavigationUI.setupWithNavController(bottomNavigation, navController)
-
-//        binding.btnLogout.setOnClickListener {
-//            finish()
-//        }
-
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        NavigationUI.setupWithNavController(bottomNavigationView, navController)
 
     }
 }

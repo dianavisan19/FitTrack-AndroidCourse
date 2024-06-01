@@ -11,8 +11,8 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragmentId_to_profileFragment"
-            app:destination="@id/profileFragment" />
+            android:id="@+id/action_homeFragment_to_userProfileFragment"
+            app:destination="@id/profileFragmentId" />
     </fragment>
     <fragment
         android:id="@+id/favoritesFragmentId"
@@ -25,8 +25,8 @@
         android:label="fragment_categories"
         tools:layout="@layout/fragment_categories" />
     <fragment
-        android:id="@+id/fragment_profile"
-        android:name="com.example.fitnessapp.ProfileFragment"
+        android:id="@+id/profileFragmentId"
+        android:name="com.example.fitnessapp.fragments.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 

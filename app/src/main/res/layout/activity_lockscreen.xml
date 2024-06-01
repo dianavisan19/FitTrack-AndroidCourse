@@ -5,8 +5,9 @@
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.MainActivity"
+    tools:context=".activities.LockScreenActivity"
     android:padding="@dimen/_20sdp">
+
     <TextView
         android:id="@+id/tv_home"
         android:layout_width="match_parent"
@@ -24,14 +25,13 @@
 
     <ImageView
         android:id="@+id/login_image"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:src="@drawable/login_image"
-        app:layout_constraintTop_toBottomOf="@id/tv_home"
+        app:layout_constraintBottom_toTopOf="@+id/btn_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/tv_home" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_login"

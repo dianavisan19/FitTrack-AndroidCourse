@@ -39,7 +39,8 @@ class RegisterActivity : AppCompatActivity() {
     private fun register(fullName: String, username: String, password: String) {
         Log.d(TAG, "register function called")
 
-        userDao = ApplicationController.appDatabase.userDao()!!;
+        userDao = ApplicationController
+            .instance?.appDatabase?.userDao()!!
 
         GlobalScope.launch(Dispatchers.IO) {
             Log.d(TAG, "Inside coroutine")

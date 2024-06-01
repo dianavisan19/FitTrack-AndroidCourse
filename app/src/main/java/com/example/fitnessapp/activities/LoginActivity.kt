@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.fitnessapp.ApplicationController
 import com.example.fitnessapp.dao.UserDao
 import com.example.fitnessapp.databinding.ActivityLoginBinding
+import com.example.fitnessapp.helpers.SharedPrefsManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -21,7 +22,8 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        userDao = ApplicationController.appDatabase.userDao()
+        userDao = ApplicationController
+            .instance?.appDatabase?.userDao()!!
 
         binding.btnLogin.setOnClickListener {
             val username = binding.etUsername.text.toString().trim()
@@ -56,6 +58,8 @@ class LoginActivity : AppCompatActivity() {
             val user = userDao.getUserByUsernameAndPassword(username, password)
             withContext(Dispatchers.Main) {
                 if (user != null) {
+                    SharedPrefsManager.writeToken(user.id)
+
                     val intent = Intent(this@LoginActivity, HomeActivity::class.java)
                     Toast.makeText(this@LoginActivity, "Success", Toast.LENGTH_SHORT).show()
                     startActivity(intent)

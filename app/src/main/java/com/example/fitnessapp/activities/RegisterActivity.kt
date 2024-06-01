@@ -39,13 +39,12 @@ class RegisterActivity : AppCompatActivity() {
     private fun register(fullName: String, username: String, password: String) {
         Log.d(TAG, "register function called")
 
-        userDao = ApplicationController
-            .instance?.appDatabase?.userDao()!!
+        userDao = ApplicationController.instance?.appDatabase?.userDao()!!
 
         GlobalScope.launch(Dispatchers.IO) {
             Log.d(TAG, "Inside coroutine")
 
-            val existingUser = userDao?.getUserByUsername(username)
+            val existingUser = userDao.getUserByUsername(username)
             if (existingUser != null) {
                 Log.d(TAG, "User already exists")
                 // Show username already exists error
@@ -58,7 +57,7 @@ class RegisterActivity : AppCompatActivity() {
                 password = password
             )
 
-            userDao?.insert(newUser)
+            userDao.insert(newUser)
             startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
         }
     }

@@ -3,21 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/homeFragmentId">
 
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.example.fitnessapp.HomeFragment"
+        android:id="@+id/homeFragmentId"
+        android:name="com.example.fitnessapp.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
-        android:id="@+id/favoritesFragment"
-        android:name="com.example.fitnessapp.FavoritesFragment"
+        android:id="@+id/favoritesFragmentId"
+        android:name="com.example.fitnessapp.fragments.FavoritesFragment"
         android:label="fragment_favorites"
         tools:layout="@layout/fragment_favorites" />
     <fragment
-        android:id="@+id/categoriesFragment"
-        android:name="com.example.fitnessapp.CategoriesFragment"
+        android:id="@+id/categoriesFragmentId"
+        android:name="com.example.fitnessapp.fragments.CategoriesFragment"
         android:label="fragment_categories"
         tools:layout="@layout/fragment_categories" />
+
+<!--    <style name="TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">-->
+<!--        name-->
+<!--    </style>-->
 </navigation>

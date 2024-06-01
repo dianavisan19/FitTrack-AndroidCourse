@@ -5,17 +5,19 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-
+import com.example.fitnessapp.dao.User
 
 @Dao
 interface UserDao {
     @Insert
     suspend fun insert(user: User)
+
     @Update
-    fun update(user: User?)
+    suspend fun update(user: User)
 
     @Delete
-    fun delete(user: User?)
+    suspend fun delete(user: User)
+
     @Query("SELECT * FROM users WHERE username = :username AND password = :password")
     suspend fun login(username: String, password: String): User?
 

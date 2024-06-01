@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.fitnessapp.ApplicationController
 import com.example.fitnessapp.dao.User
+import com.example.fitnessapp.dao.UserDao
 import com.example.fitnessapp.databinding.ActivityRegisterBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -14,6 +15,7 @@ import kotlinx.coroutines.launch
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
     private val TAG = "com.example.fitnessapp.activities.RegisterActivity"
+    private lateinit var userDao: UserDao
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +39,7 @@ class RegisterActivity : AppCompatActivity() {
     private fun register(fullName: String, username: String, password: String) {
         Log.d(TAG, "register function called")
 
-        val userDao = ApplicationController.instance?.appDatabase?.userDao()
+        userDao = ApplicationController.appDatabase.userDao()!!;
 
         GlobalScope.launch(Dispatchers.IO) {
             Log.d(TAG, "Inside coroutine")

@@ -5,7 +5,7 @@
     android:id="@+id/lockScreenActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.LockScreenActivity"
+    tools:context=".activities.HomeActivity"
     android:padding="@dimen/_20sdp">
 
     <fragment
@@ -26,5 +26,4 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/btm_menu" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

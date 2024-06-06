@@ -22,7 +22,7 @@ class ApplicationController: Application()  {
         appDatabase = Room.databaseBuilder(
             this,
             AppDatabase::class.java,
-            "fitness-db"
+            "fitness_db"
         )
             .fallbackToDestructiveMigration() // DEVELOPMENT ONLY
             .build()

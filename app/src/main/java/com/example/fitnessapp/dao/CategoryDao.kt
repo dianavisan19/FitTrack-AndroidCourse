@@ -1,5 +1,6 @@
 package com.example.fitnessapp.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -10,5 +11,6 @@ interface CategoryDao {
     suspend fun insert(category: Category)
 
     @Query("SELECT * FROM categories")
-    suspend fun getAllCategories(): List<Category>
+    fun getAllCategoriesLiveData(): LiveData<List<Category>>
 }
+

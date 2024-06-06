@@ -41,6 +41,7 @@ android {
     buildFeatures {
         compose = true
         viewBinding = true
+        dataBinding = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -111,5 +112,7 @@ dependencies {
     implementation("androidx.room:room-ktx:$room_version")
 
     implementation ("de.hdodenhof:circleimageview:3.1.0")
+    implementation ("androidx.databinding:databinding-runtime:7.0.0")
+
 
 }

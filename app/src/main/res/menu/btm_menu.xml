@@ -7,9 +7,9 @@
         android:title="@string/home" />
     <item
         android:enabled="true"
-        android:id="@+id/favoritesFragmentId"
-        android:icon="@drawable/favorites"
-        android:title="@string/favorite_workouts" />
+        android:id="@+id/exercisesFragmentFragmentId"
+        android:icon="@drawable/dumbbell_icon"
+        android:title="@string/exercises" />
     <item
         android:enabled="true"
         android:id="@+id/categoriesFragmentId"

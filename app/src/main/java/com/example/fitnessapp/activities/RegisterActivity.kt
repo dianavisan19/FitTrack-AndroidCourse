@@ -47,7 +47,6 @@ class RegisterActivity : AppCompatActivity() {
             val existingUser = userDao.getUserByUsername(username)
             if (existingUser != null) {
                 Log.d(TAG, "User already exists")
-                // Show username already exists error
                 return@launch
             }
 

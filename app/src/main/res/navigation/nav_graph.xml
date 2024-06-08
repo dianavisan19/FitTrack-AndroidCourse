@@ -19,10 +19,10 @@
     </fragment>
 
     <fragment
-        android:id="@+id/favoritesFragmentId"
-        android:name="com.example.fitnessapp.fragments.FavoritesFragment"
-        android:label="fragment_favorites"
-        tools:layout="@layout/fragment_favorites" />
+        android:id="@+id/exercisesFragmentFragmentId"
+        android:name="com.example.fitnessapp.fragments.ExercisesFragment"
+        android:label="exercises_fragment"
+        tools:layout="@layout/fragment_exercises" />
 
     <fragment
         android:id="@+id/categoriesFragmentId"
@@ -35,6 +35,11 @@
         android:name="com.example.fitnessapp.fragments.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/exercisesFragment"
+        android:name="com.example.fitnessapp.fragments.ExercisesFragment"
+        android:label="fragment_exercises"
+        tools:layout="@layout/fragment_exercises" />
 
     <fragment
         android:id="@+id/categoryDetailsFragment"

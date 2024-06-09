@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnessapp.R
-import com.example.fitnessapp.dao.Exercise
+import com.example.fitnessapp.dao.ExerciseModel
 
-class ExerciseAdapter : RecyclerView.Adapter<ExerciseAdapter.ExerciseViewHolder>() {
+class ExerciseListAdapter : RecyclerView.Adapter<ExerciseListAdapter.ExerciseViewHolder>() {
 
-    private var exercises = listOf<Exercise>()
+    private var exerciseModels = listOf<ExerciseModel>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExerciseViewHolder {
         val view =
@@ -20,18 +20,18 @@ class ExerciseAdapter : RecyclerView.Adapter<ExerciseAdapter.ExerciseViewHolder>
     }
 
     override fun onBindViewHolder(holder: ExerciseViewHolder, position: Int) {
-        val exercise = exercises[position]
+        val exercise = exerciseModels[position]
         holder.bind(exercise)
     }
 
     override fun getItemCount(): Int {
-        return exercises.size
+        return exerciseModels.size
     }
 
-    fun setExercises(exercises: List<Exercise>) {
-        this.exercises = exercises
+    fun setExercises(exerciseModels: List<ExerciseModel>) {
+        this.exerciseModels = exerciseModels
         notifyDataSetChanged()
-        Log.d("ExerciseAdapter", "Exercises set: ${exercises.size}")
+        Log.d("ExerciseListAdapter", "Exercises set: ${exerciseModels.size}")
     }
 
     class ExerciseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -40,9 +40,9 @@ class ExerciseAdapter : RecyclerView.Adapter<ExerciseAdapter.ExerciseViewHolder>
         private val exerciseCategoryTextView: TextView =
             itemView.findViewById(R.id.exerciseCategoryTextView)
 
-        fun bind(exercise: Exercise) {
-            exerciseNameTextView.text = exercise.name
-            exerciseCategoryTextView.text = exercise.categoryName
+        fun bind(exerciseModel: ExerciseModel) {
+            exerciseNameTextView.text = exerciseModel.name
+            exerciseCategoryTextView.text = exerciseModel.categoryName
         }
     }
 }

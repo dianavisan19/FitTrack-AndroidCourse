@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-exercise = [
+exerciseModel = [
     {"id": 1, "categoryName": "yoga",  "name": "TreePose"},
     {"id": 2, "categoryName": "yoga",  "name": "Warrior1Pose"},
     {"id": 3, "categoryName": "yoga",  "name": "Warrior2Pose"},
@@ -32,51 +32,51 @@ exercise = [
 
 workouts = {
     "yoga": [
-        {"workoutName": "Yoga Flow 1", "exercises": [1, 2, 3]},
-        {"workoutName": "Yoga Flow 2", "exercises": [4, 5, 6]},
-        {"workoutName": "Yoga Flow 3", "exercises": [1, 4, 5]},
+        {"workoutName": "Yoga Flow 1", "exerciseModels": [1, 2, 3]},
+        {"workoutName": "Yoga Flow 2", "exerciseModels": [4, 5, 6]},
+        {"workoutName": "Yoga Flow 3", "exerciseModels": [1, 4, 5]},
     ],
     "pilates": [
-        {"workoutName": "Pilates Beginner", "exercises": [7, 8, 9]},
-        {"workoutName": "Pilates Intermediate", "exercises": [10, 11, 12]},
-        {"workoutName": "Pilates Advanced", "exercises": [7, 10, 12]},
+        {"workoutName": "Pilates Beginner", "exerciseModels": [7, 8, 9]},
+        {"workoutName": "Pilates Intermediate", "exerciseModels": [10, 11, 12]},
+        {"workoutName": "Pilates Advanced", "exerciseModels": [7, 10, 12]},
     ],
     "HIIT": [
-        {"workoutName": "HIIT Blast", "exercises": [13, 14, 15]},
-        {"workoutName": "HIIT Burn", "exercises": [16, 17, 18]},
-        {"workoutName": "HIIT Challenge", "exercises": [13, 16, 18]},
+        {"workoutName": "HIIT Blast", "exerciseModels": [13, 14, 15]},
+        {"workoutName": "HIIT Burn", "exerciseModels": [16, 17, 18]},
+        {"workoutName": "HIIT Challenge", "exerciseModels": [13, 16, 18]},
     ],
     "bodyweight": [
-        {"workoutName": "Bodyweight Basics", "exercises": [19, 20, 21]},
-        {"workoutName": "Bodyweight Strength", "exercises": [22, 23, 24]},
-        {"workoutName": "Bodyweight Endurance", "exercises": [19, 22, 24]},
+        {"workoutName": "Bodyweight Basics", "exerciseModels": [19, 20, 21]},
+        {"workoutName": "Bodyweight Strength", "exerciseModels": [22, 23, 24]},
+        {"workoutName": "Bodyweight Endurance", "exerciseModels": [19, 22, 24]},
     ],
     "cycling": [
-        {"workoutName": "Cycling Session 1", "exercises": [25]},
-        {"workoutName": "Cycling Session 2", "exercises": [25]},
-        {"workoutName": "Cycling Session 3", "exercises": [25]},
+        {"workoutName": "Cycling Session 1", "exerciseModels": [25]},
+        {"workoutName": "Cycling Session 2", "exerciseModels": [25]},
+        {"workoutName": "Cycling Session 3", "exerciseModels": [25]},
     ],
 }
 
 
-@app.route('/exercise', methods=['GET'])
+@app.route('/exerciseModel', methods=['GET'])
 def get_exercise():
-    return jsonify(exercise)
+    return jsonify(exerciseModel)
 
 @app.route('/exercises/category/<category_name>', methods=['GET'])
-def get_exercises_by_category(category_name):
+def get_workouts_by_category(category_name):
     print(f"Received categoryName: {category_name}")
-    filtered_exercises = [ex for ex in exercise if ex["categoryName"].lower() == category_name.lower()]
-    return jsonify(filtered_exercises)
+    filtered_workouts = workouts.get(category_name.lower(), [])
+    return jsonify(filtered_workouts)
 
 @app.route('/categories', methods=['GET'])
 def get_categories():
-    categories = set(ex["categoryName"] for ex in exercise)
+    categories = set(ex["categoryName"] for ex in exerciseModel)
     return jsonify(list(categories))
 
-@app.route('/exercises', methods=['GET'])
+@app.route('/exerciseModels', methods=['GET'])
 def get_all_exercises():
-    return jsonify(exercise)
+    return jsonify(exerciseModel)
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -15,8 +15,8 @@ import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
 import com.example.fitnessapp.R
-import com.example.fitnessapp.dao.Exercise
-import com.example.fitnessapp.helpers.ExerciseAdapter
+import com.example.fitnessapp.dao.ExerciseModel
+import com.example.fitnessapp.helpers.ExerciseListAdapter
 import org.json.JSONArray
 
 /**
@@ -26,7 +26,7 @@ import org.json.JSONArray
  */
 class ExercisesFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
-    private lateinit var exerciseAdapter: ExerciseAdapter
+    private lateinit var exerciseListAdapter: ExerciseListAdapter
     private lateinit var categoryNameTextView: TextView
     private lateinit var requestQueue: RequestQueue
     override fun onCreateView(
@@ -38,8 +38,8 @@ class ExercisesFragment : Fragment() {
         recyclerView = view.findViewById(R.id.recyclerView)
         categoryNameTextView = view.findViewById(R.id.categoryNameTextView)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        exerciseAdapter = ExerciseAdapter()
-        recyclerView.adapter = exerciseAdapter
+        exerciseListAdapter = ExerciseListAdapter()
+        recyclerView.adapter = exerciseListAdapter
 
         requestQueue = Volley.newRequestQueue(context)
 
@@ -61,7 +61,7 @@ class ExercisesFragment : Fragment() {
             Request.Method.GET, url, null,
             { response ->
                 val exercises = parseExercises(response)
-                exerciseAdapter.setExercises(exercises)
+                exerciseListAdapter.setExercises(exercises)
             },
             { error ->
                 Toast.makeText(context, "Error: ${error.message}", Toast.LENGTH_SHORT).show()
@@ -78,7 +78,7 @@ class ExercisesFragment : Fragment() {
             Request.Method.GET, url, null,
             { response ->
                 val exercises = parseExercises(response)
-                exerciseAdapter.setExercises(exercises)
+                exerciseListAdapter.setExercises(exercises)
             },
             { error ->
                 Log.e("ExercisesFragment", "Error: ${error.message}", error)
@@ -88,18 +88,18 @@ class ExercisesFragment : Fragment() {
         requestQueue.add(jsonArrayRequest)
     }
 
-    private fun parseExercises(response: JSONArray): List<Exercise> {
-        val exercises = mutableListOf<Exercise>()
+    private fun parseExercises(response: JSONArray): List<ExerciseModel> {
+        val exerciseModels = mutableListOf<ExerciseModel>()
         for (i in 0 until response.length()) {
             val exerciseJson = response.getJSONObject(i)
-            val exercise = Exercise(
+            val exerciseModel = ExerciseModel(
                 id = exerciseJson.getInt("id"),
                 categoryName = exerciseJson.getString("categoryName"),
                 name = exerciseJson.getString("name")
             )
-            exercises.add(exercise)
+            exerciseModels.add(exerciseModel)
         }
-        return exercises
+        return exerciseModels
     }
 
 

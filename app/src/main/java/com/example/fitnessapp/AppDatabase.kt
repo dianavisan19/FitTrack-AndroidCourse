@@ -4,16 +4,14 @@ package com.example.fitnessapp
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
-import androidx.room.Room.databaseBuilder
 import androidx.room.RoomDatabase
 import com.example.fitnessapp.dao.Category
 import com.example.fitnessapp.dao.CategoryDao
-import com.example.fitnessapp.dao.User
+import com.example.fitnessapp.dao.UserModel
 import com.example.fitnessapp.dao.UserDao
-import kotlin.concurrent.Volatile
 
 
-@Database(entities = [User::class, Category::class], version = 3, exportSchema = false)
+@Database(entities = [UserModel::class, Category::class], version = 3, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
     abstract fun categoryDao(): CategoryDao

@@ -9,7 +9,7 @@
         android:enabled="true"
         android:id="@+id/exercisesFragmentFragmentId"
         android:icon="@drawable/dumbbell_icon"
-        android:title="@string/exercises" />
+        android:title="@string/exerciseModels" />
     <item
         android:enabled="true"
         android:id="@+id/categoriesFragmentId"

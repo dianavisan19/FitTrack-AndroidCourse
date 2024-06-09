@@ -91,7 +91,7 @@ class ProfileFragment : Fragment() {
                 userHeightEditText.setText(it.height.toString())
                 userWeightEditText.setText(it.weight.toString())
             } ?: run {
-                userNameTextView.text = "User Not Found"
+                userNameTextView.text = "UserModel Not Found"
             }
         }
     }

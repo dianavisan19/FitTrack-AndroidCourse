@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.fitnessapp.ApplicationController
-import com.example.fitnessapp.dao.User
+import com.example.fitnessapp.dao.UserModel
 import com.example.fitnessapp.dao.UserDao
 import com.example.fitnessapp.databinding.ActivityRegisterBinding
 import kotlinx.coroutines.Dispatchers
@@ -46,17 +46,17 @@ class RegisterActivity : AppCompatActivity() {
 
             val existingUser = userDao.getUserByUsername(username)
             if (existingUser != null) {
-                Log.d(TAG, "User already exists")
+                Log.d(TAG, "UserModel already exists")
                 return@launch
             }
 
-            val newUser = User(
+            val newUserModel = UserModel(
                 fullName = fullName,
                 username = username,
                 password = password
             )
 
-            userDao.insert(newUser)
+            userDao.insert(newUserModel)
             startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
         }
     }

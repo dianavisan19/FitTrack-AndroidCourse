@@ -1,10 +1,12 @@
 package com.example.fitnessapp.helpers
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnessapp.R
 import com.example.fitnessapp.dao.WorkoutModel
@@ -27,7 +29,11 @@ class WorkoutListAdapter(private val workouts: List<WorkoutModel>) :
         val currentItem = workouts[position]
         holder.workoutNameTextView.text = currentItem.workoutName
         holder.startButton.setOnClickListener {
-            // to do
+            val bundle = Bundle().apply {
+                putString("workoutName", currentItem.workoutName)
+                putIntegerArrayList("exerciseIds", ArrayList(currentItem.exercises))
+            }
+            it.findNavController().navigate(R.id.action_categoryDetailsFragment_to_workoutFragment, bundle)
         }
     }
 

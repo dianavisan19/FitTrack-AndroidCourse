@@ -71,14 +71,19 @@ class CategoryDetailsFragment : Fragment() {
         workouts.clear()
 
         for (jsonElement in jsonArray) {
-            val workout = gson.fromJson(jsonElement, WorkoutModel::class.java)
-            workouts.add(workout)
+            val jsonObject = jsonElement.asJsonObject
+            val workoutName = jsonObject.get("workoutName").asString
+            val exerciseIdsJsonArray = jsonObject.getAsJsonArray("exerciseModels")
+
+            val exerciseIds = exerciseIdsJsonArray.map { it.asInt }
+
+            workouts.add(WorkoutModel(workoutName, exerciseIds))
         }
 
         adapter.notifyDataSetChanged()
 
         workouts.forEach { workout ->
-            println("Workout: ${workout.workoutName}, Exercises: ${workout.exercises}")
+            println("Workout: ${workout.workoutName}, Exercise IDs: ${workout.exercises}")
         }
     }
 }

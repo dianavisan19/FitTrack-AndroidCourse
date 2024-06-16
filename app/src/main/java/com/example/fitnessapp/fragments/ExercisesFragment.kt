@@ -95,7 +95,9 @@ class ExercisesFragment : Fragment() {
             val exerciseModel = ExerciseModel(
                 id = exerciseJson.getInt("id"),
                 categoryName = exerciseJson.getString("categoryName"),
-                name = exerciseJson.getString("name")
+                name = exerciseJson.getString("name"),
+                reps = exerciseJson.getInt("reps"),
+                sets = exerciseJson.getInt("sets")
             )
             exerciseModels.add(exerciseModel)
         }

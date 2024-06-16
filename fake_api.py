@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 
@@ -58,25 +58,21 @@ workouts = {
     ],
 }
 
-
-@app.route('/exerciseModel', methods=['GET'])
-def get_exercise():
-    return jsonify(exerciseModel)
-
 @app.route('/exercises/category/<category_name>', methods=['GET'])
 def get_workouts_by_category(category_name):
     print(f"Received categoryName: {category_name}")
     filtered_workouts = workouts.get(category_name.lower(), [])
+
+    # Extract only exercise IDs
+    for workout in filtered_workouts:
+        workout["exerciseModels"] = [ex_id for ex_id in workout["exerciseModels"]]
+
     return jsonify(filtered_workouts)
-
-@app.route('/categories', methods=['GET'])
-def get_categories():
-    categories = set(ex["categoryName"] for ex in exerciseModel)
-    return jsonify(list(categories))
-
-@app.route('/exerciseModels', methods=['GET'])
-def get_all_exercises():
-    return jsonify(exerciseModel)
+@app.route('/exercises', methods=['POST'])
+def get_exercises_by_ids():
+    exercise_ids = request.json.get("exerciseIds", [])
+    exercises = [exercise for exercise in exerciseModel if exercise["id"] in exercise_ids]
+    return jsonify(exercises)
 
 if __name__ == '__main__':
     app.run(debug=True)

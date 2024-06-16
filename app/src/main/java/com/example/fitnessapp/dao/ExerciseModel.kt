@@ -8,5 +8,7 @@ data class ExerciseModel(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
     val categoryName: String,
-    val name: String
+    val name: String,
+    val reps: Int,
+    val sets: Int
 )

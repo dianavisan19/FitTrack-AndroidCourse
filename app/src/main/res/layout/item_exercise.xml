@@ -27,6 +27,22 @@
             android:layout_height="wrap_content"
             android:text="Category Name"
             android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/repsTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@android:color/darker_gray"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/setsTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@android:color/darker_gray"
+            android:textStyle="bold"/>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

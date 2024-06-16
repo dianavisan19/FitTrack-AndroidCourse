@@ -11,38 +11,36 @@ import com.example.fitnessapp.dao.ExerciseModel
 
 class ExerciseListAdapter : RecyclerView.Adapter<ExerciseListAdapter.ExerciseViewHolder>() {
 
-    private var exerciseModels = listOf<ExerciseModel>()
+    private var exercises = listOf<ExerciseModel>()
+
+    fun setExercises(exercises: List<ExerciseModel>) {
+        this.exercises = exercises
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExerciseViewHolder {
-        val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_exercise, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_exercise, parent, false)
         return ExerciseViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ExerciseViewHolder, position: Int) {
-        val exercise = exerciseModels[position]
+        val exercise = exercises[position]
         holder.bind(exercise)
     }
 
     override fun getItemCount(): Int {
-        return exerciseModels.size
-    }
-
-    fun setExercises(exerciseModels: List<ExerciseModel>) {
-        this.exerciseModels = exerciseModels
-        notifyDataSetChanged()
-        Log.d("ExerciseListAdapter", "Exercises set: ${exerciseModels.size}")
+        return exercises.size
     }
 
     class ExerciseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val exerciseNameTextView: TextView =
-            itemView.findViewById(R.id.exerciseNameTextView)
-        private val exerciseCategoryTextView: TextView =
-            itemView.findViewById(R.id.exerciseCategoryTextView)
+        private val nameTextView: TextView = itemView.findViewById(R.id.exerciseNameTextView)
+        private val repsTextView: TextView = itemView.findViewById(R.id.repsTv)
+        private val setsTextView: TextView = itemView.findViewById(R.id.setsTv)
 
-        fun bind(exerciseModel: ExerciseModel) {
-            exerciseNameTextView.text = exerciseModel.name
-            exerciseCategoryTextView.text = exerciseModel.categoryName
+        fun bind(exercise: ExerciseModel) {
+            nameTextView.text = exercise.name.replace("_", " ")
+            repsTextView.text = "Reps: ${exercise.reps}"
+            setsTextView.text = "Sets: ${exercise.sets}"
         }
     }
 }

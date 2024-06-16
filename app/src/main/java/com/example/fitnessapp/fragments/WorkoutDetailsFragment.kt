@@ -14,15 +14,13 @@ import com.android.volley.toolbox.Volley
 import com.example.fitnessapp.R
 import com.example.fitnessapp.dao.ExerciseModel
 import com.example.fitnessapp.helpers.ExerciseListAdapter
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import org.json.JSONObject
 
 class WorkoutDetailsFragment : Fragment() {
 
     private lateinit var workoutName: String
     private val exercises = ArrayList<ExerciseModel>()
-    private val adapter = ExerciseListAdapter()
+    private lateinit var adapter: ExerciseListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +35,9 @@ class WorkoutDetailsFragment : Fragment() {
         workoutName = arguments?.getString("workoutName") ?: ""
 
         view.findViewById<TextView>(R.id.workout_title).text = workoutName
+
+        adapter = ExerciseListAdapter(requireContext())
+
         setupRecyclerView(view)
         fetchExercises()
     }
@@ -92,4 +93,3 @@ class WorkoutDetailsFragment : Fragment() {
         }
     }
 }
-

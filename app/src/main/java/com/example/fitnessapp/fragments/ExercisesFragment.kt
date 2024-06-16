@@ -23,12 +23,12 @@ import org.json.JSONArray
  * A simple [Fragment] subclass.
  * Use the [ExercisesFragment.newInstance] factory method to
  * create an instance of this fragment.
- */
-class ExercisesFragment : Fragment() {
+ */class ExercisesFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var exerciseListAdapter: ExerciseListAdapter
     private lateinit var categoryNameTextView: TextView
     private lateinit var requestQueue: RequestQueue
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,7 +38,8 @@ class ExercisesFragment : Fragment() {
         recyclerView = view.findViewById(R.id.recyclerView)
         categoryNameTextView = view.findViewById(R.id.categoryNameTextView)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        exerciseListAdapter = ExerciseListAdapter()
+
+        exerciseListAdapter = ExerciseListAdapter(requireContext())
         recyclerView.adapter = exerciseListAdapter
 
         requestQueue = Volley.newRequestQueue(context)
@@ -103,6 +104,4 @@ class ExercisesFragment : Fragment() {
         }
         return exerciseModels
     }
-
-
 }

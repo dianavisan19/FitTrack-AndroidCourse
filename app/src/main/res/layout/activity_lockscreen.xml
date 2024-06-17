@@ -44,6 +44,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/button_background"
         app:layout_constraintVertical_bias="0.775" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -52,6 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="736dp"
         android:text="Register"
+        android:background="@drawable/button_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"

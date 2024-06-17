@@ -33,7 +33,7 @@ class WorkoutListAdapter(private val workouts: List<WorkoutModel>) :
                 putString("workoutName", currentItem.workoutName)
                 putIntegerArrayList("exerciseIds", ArrayList(currentItem.exercises))
             }
-            it.findNavController().navigate(R.id.action_categoryDetailsFragment_to_workoutFragment, bundle)
+            it.findNavController().navigate(R.id.action_categoryDetailsFragment_to_workoutDetailsFragment, bundle)
         }
     }
 

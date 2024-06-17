@@ -45,13 +45,18 @@
         android:id="@+id/categoryDetailsFragment"
         android:name="com.example.fitnessapp.fragments.CategoryDetailsFragment"
         tools:layout="@layout/fragment_category_details">
-    <action
-        android:id="@+id/action_categoryDetailsFragment_to_workoutFragment"
-        app:destination="@id/workoutFragment" />
+        <action
+            android:id="@+id/action_categoryDetailsFragment_to_workoutDetailsFragment"
+            app:destination="@id/workoutDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/workoutFragment"
         android:name="com.example.fitnessapp.fragments.WorkoutFragment"
         android:label="fragment_workout"
         tools:layout="@layout/fragment_workout"/>
+    <fragment
+        android:id="@+id/workoutDetailsFragment"
+        android:name="com.example.fitnessapp.fragments.WorkoutDetailsFragment"
+        android:label="fragment_workout_details"
+        tools:layout="@layout/fragment_workout_details" />
 </navigation>

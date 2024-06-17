@@ -45,9 +45,5 @@ class HomeFragment : Fragment() {
             categories?.let { adapter.submitList(it) }
         })
 
-        val userIcon = view.findViewById<ImageView>(R.id.user_icon)
-        userIcon.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_userProfileFragment)
-        }
     }
 }

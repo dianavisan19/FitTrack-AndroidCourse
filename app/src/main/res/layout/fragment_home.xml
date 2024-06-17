@@ -49,14 +49,6 @@
                     android:textSize="25sp"
                     android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/user_icon"
-                    android:layout_width="30dp"
-                    android:layout_height="match_parent"
-                    android:contentDescription="user_icon"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/user" />
-
             </LinearLayout>
 
             <TextView

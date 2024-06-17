@@ -29,8 +29,8 @@ class HomeActivity : AppCompatActivity() {
                     navController.navigate(R.id.exercisesFragmentFragmentId)
                     true
                 }
-                R.id.categoriesFragmentId -> {
-                    navController.navigate(R.id.categoriesFragmentId)
+                R.id.profileFragmentId -> {
+                    navController.navigate(R.id.profileFragmentId)
                     true
                 }
                 else -> false

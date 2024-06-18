@@ -41,8 +41,11 @@ class CategoryDetailsFragment : Fragment() {
 
         view.findViewById<TextView>(R.id.category_title).text = categoryName
         buttonSave.setOnClickListener(View.OnClickListener {
-            val item: String = categoryName
-            saveItem(item)
+            //SharedPrefsManager.write("saveItem", categoryName)
+
+            SharedPrefsManager.addToList("myListKey", categoryName)
+
+
         })
         setupRecyclerView(view)
         fetchWorkouts()
@@ -94,7 +97,5 @@ class CategoryDetailsFragment : Fragment() {
             println("Workout: ${workout.workoutName}, Exercise IDs: ${workout.exercises}")
         }
     }
-    private fun saveItem(item: String) {
-        SharedPrefsManager.write("saveItem", item)
-    }
+
 }

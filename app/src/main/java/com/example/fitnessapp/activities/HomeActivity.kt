@@ -25,8 +25,8 @@ class HomeActivity : AppCompatActivity() {
                     navController.navigate(R.id.homeFragmentId)
                     true
                 }
-                R.id.displayFragmentId -> {
-                    navController.navigate(R.id.displayFragmentId)
+                R.id.displayFragment -> {
+                    navController.navigate(R.id.displayFragment)
                     true
                 }
                 R.id.profileFragmentId -> {

@@ -18,16 +18,19 @@ class DisplayFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View = inflater.inflate(R.layout.fragment_display, container, false)
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_display, container, false)
         textViewSavedItem = view.findViewById<TextView>(R.id.textView_savedItem)
-        displaySavedItem()
-    }
 
-    private fun displaySavedItem() {
-        val savedItem = SharedPrefsManager.read("savedItem")
-        textViewSavedItem.text = savedItem}
+        // Retrieve the list from SharedPreferences
+        val savedList = SharedPrefsManager.readList("myListKey")
+
+        // Convert the list to a string to display in the TextView
+        val savedItemsString = savedList.joinToString(separator = "\n")
+
+        // Display the items in the TextView
+        textViewSavedItem.text = savedItemsString
+
+        return view
+    }
 }

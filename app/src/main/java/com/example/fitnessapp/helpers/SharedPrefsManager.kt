@@ -18,9 +18,16 @@ object SharedPrefsManager {
         write(ARG_TOKEN, value)
     }
 
-    private fun write(key: String, value: Long) = this.sharedPreferences?.let { sharedPrefs ->
+     fun write(key: String, value: Long) = this.sharedPreferences?.let { sharedPrefs ->
         with (sharedPrefs.edit()) {
             putLong(key, value)
+            apply()
+        }
+    }
+
+    fun write(key: String, value: String) = this.sharedPreferences?.let { sharedPrefs ->
+        with (sharedPrefs.edit()) {
+            putString(key, value)
             apply()
         }
     }
@@ -28,6 +35,7 @@ object SharedPrefsManager {
     fun readToken(): Long = readLong(ARG_TOKEN)
 
     private fun readLong(key: String): Long = sharedPreferences?.getLong(key, 0L) ?: 0L
+     fun read(key: String): String = sharedPreferences?.getString(key, "") ?: ""
 
     fun removeToken() = remove(ARG_TOKEN)
 

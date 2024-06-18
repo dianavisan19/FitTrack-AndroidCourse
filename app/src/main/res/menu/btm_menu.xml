@@ -7,7 +7,7 @@
         android:title="@string/home" />
     <item
         android:enabled="true"
-        android:id="@+id/exercisesFragmentFragmentId"
+        android:id="@+id/displayFragmentId"
         android:icon="@drawable/dumbbell_icon"
         android:title="@string/exerciseModels" />
     <item

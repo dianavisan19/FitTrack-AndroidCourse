@@ -1,9 +1,11 @@
 package com.example.fitnessapp.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,17 +14,19 @@ import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.example.fitnessapp.R
 import com.example.fitnessapp.dao.WorkoutModel
+import com.example.fitnessapp.helpers.SharedPrefsManager
 import com.example.fitnessapp.helpers.VolleyRequestQueue
 import com.example.fitnessapp.helpers.WorkoutListAdapter
 import com.google.gson.Gson
 import com.google.gson.JsonArray
-import com.google.gson.reflect.TypeToken
 
 class CategoryDetailsFragment : Fragment() {
 
     private lateinit var categoryName: String
     private val workouts = ArrayList<WorkoutModel>()
     private val adapter = WorkoutListAdapter(workouts)
+    private lateinit var buttonSave: Button
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,9 +37,13 @@ class CategoryDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         categoryName = arguments?.getString("category_name") ?: ""
+        buttonSave = view.findViewById(R.id.button_save);
 
         view.findViewById<TextView>(R.id.category_title).text = categoryName
-
+        buttonSave.setOnClickListener(View.OnClickListener {
+            val item: String = categoryName
+            saveItem(item)
+        })
         setupRecyclerView(view)
         fetchWorkouts()
     }
@@ -85,5 +93,8 @@ class CategoryDetailsFragment : Fragment() {
         workouts.forEach { workout ->
             println("Workout: ${workout.workoutName}, Exercise IDs: ${workout.exercises}")
         }
+    }
+    private fun saveItem(item: String) {
+        SharedPrefsManager.write("saveItem", item)
     }
 }

@@ -29,7 +29,6 @@ object SharedPrefsManager {
 
     private fun readLong(key: String): Long = sharedPreferences?.getLong(key, 0L) ?: 0L
 
-    fun removeToken() = remove(ARG_TOKEN)
 
     private fun remove(key: String) = this.sharedPreferences?.let { sharedPrefs ->
         with (sharedPrefs.edit()) {

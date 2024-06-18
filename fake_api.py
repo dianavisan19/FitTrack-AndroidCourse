@@ -10,7 +10,7 @@ exerciseModel = [
     {"id": 4, "categoryName": "yoga",  "name": "DownwardDog", "reps": 8, "sets": 4},
     {"id": 5, "categoryName": "yoga",  "name": "BridgePose", "reps": 15, "sets": 3},
     {"id": 6, "categoryName": "yoga",  "name": "ChildPose", "reps": 10, "sets": 3},
-    {"id": 7, "categoryName": "pilates",  "name": "Roll-Up", "reps": 12, "sets": 3},
+    {"id": 7, "categoryName": "pilates",  "name": "RollUp", "reps": 12, "sets": 3},
     {"id": 8, "categoryName": "pilates",  "name": "TheHundred", "reps": 15, "sets": 3},
     {"id": 9, "categoryName": "pilates",  "name": "Teaser", "reps": 10, "sets": 3},
     {"id": 10, "categoryName": "pilates",  "name": "Swan", "reps": 8, "sets": 4},
@@ -42,7 +42,7 @@ workouts = {
         {"workoutName": "Pilates_Intermediate", "exerciseModels": [10, 11, 12]},
         {"workoutName": "Pilates_Advanced", "exerciseModels": [7, 10, 12]},
     ],
-    "HIIT": [
+    "hiit": [
         {"workoutName": "HIIT_Blast", "exerciseModels": [13, 14, 15]},
         {"workoutName": "HIIT_Burn", "exerciseModels": [16, 17, 18]},
         {"workoutName": "HIIT_Challenge", "exerciseModels": [13, 16, 18]},
